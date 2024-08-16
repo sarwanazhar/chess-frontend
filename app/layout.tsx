@@ -1,18 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
   RedirectToSignIn,
   SignedIn,
   SignedOut,
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "700"], // Adjust weights as needed
+  style: ["normal", "italic"], // Include styles if needed
+});
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Chess",
   description: "Made by sarwan",
 };
@@ -24,17 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-          >
-        <ClerkProvider>
-          <ModalProvider />
+      <body className={roboto.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <ClerkProvider>
+            <ModalProvider />
             {children}
-        </ClerkProvider>
+          </ClerkProvider>
         </ThemeProvider>
-        </body>
+      </body>
     </html>
   );
 }

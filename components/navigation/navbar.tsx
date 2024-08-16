@@ -4,6 +4,8 @@ import {
     AvatarImage,
 } from '@/components/ui/avatar'
 import { MobileToggle } from "../mobile-toggle";
+import { Gem } from "lucide-react";
+import ActionTooltip from "../ui/action-tooltip";
 
 interface NavBarProps {
     profile: User;
@@ -20,6 +22,11 @@ const NavBar = async ({
                     <AvatarImage src={profile.imageUrl} />
                 </Avatar>
                 <h1>{profile.name}</h1>
+                {profile.subscribed === true && (
+                    <ActionTooltip label="Diamond Member" align="center" side="bottom">
+                        <Gem className="text-blue-500" />
+                    </ActionTooltip>
+                )}
             </div>
             <div>
                 <MobileToggle />

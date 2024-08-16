@@ -37,8 +37,8 @@ const SideBar = () => {
             Puzzles
           </button>
           </ActionTooltip>
-          <ActionTooltip side="right" label="buy premium to support us." align="center">
-          <button className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-blue-400 group transition">
+          <ActionTooltip  side="right" label="buy premium to support us." align="center">
+          <button onClick={() => router.push('/subscribe')} className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-blue-400 group transition">
             <Gem className="text-blue-600 group-hover:text-blue-800" />
             Premium
           </button>

@@ -7,6 +7,7 @@ import { ChevronRight } from "lucide-react";
 
 const Main = async () => {
   const profile = await initialProfile()
+
   
     return ( 
         <>
@@ -15,7 +16,7 @@ const Main = async () => {
               <SideBar />
             </div>
             <div className="hidden lg:block h-[200vh] w-44 bg-zinc-900/70">
-              
+            
             </div>
             <div className="w-full">
               <NavBar profile={profile} />

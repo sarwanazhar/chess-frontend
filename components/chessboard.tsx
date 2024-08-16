@@ -6,6 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { User } from '@prisma/client';
 import socket from '@/lib/socket';
 import { useRouter } from 'next/navigation';
+import { Gem } from 'lucide-react';
+import ActionTooltip from './ui/action-tooltip';
 
 interface ChessBoardComponentProps {
     profile: User;
@@ -19,7 +21,7 @@ export const ChessBoardComponent = ({
     const [fen, setFen] = useState<string>("start");
     const [gameId, setGameId] = useState<null | string>(null);
     const [color, setColor] = useState<'white' | 'black'>('white');
-    const [opponent, setOpponent] = useState<{ name: string; imageUrl: string } | null>(null);
+    const [opponent, setOpponent] = useState<{ name: string; imageUrl: string; subscribed: boolean; } | null>(null);
     const router = useRouter();
     const id = profile.id
 
@@ -29,7 +31,6 @@ export const ChessBoardComponent = ({
             socket.connect();
         }
 
-        socket.emit('reconnect', profile.userId)
 
         socket.emit('joinGame', profile.userId);
 
@@ -42,7 +43,7 @@ export const ChessBoardComponent = ({
             setWaiting(false); // Stop waiting if an error occurs
         });
 
-        socket.on('gameStarted', (gameData: { gameId: string; fen: string; color: 'white' | 'black'; opponent: { name: string; imageUrl: string } }) => {
+        socket.on('gameStarted', (gameData: { gameId: string; fen: string; color: 'white' | 'black'; opponent: { name: string; imageUrl: string; subscribed: boolean; } }) => {
             setGameId(gameData.gameId);
             setFen(gameData.fen);
             setColor(gameData.color);
@@ -93,8 +94,13 @@ export const ChessBoardComponent = ({
                 <Avatar>
                     <AvatarImage src={profile.imageUrl} />
                 </Avatar>
-                <h1 className="font-bold">
+                <h1 className="font-bold flex gap-3">
                     {profile.name}
+                    {profile.subscribed === true && (
+                        <ActionTooltip label='Diamond Member' align='center' side='top'>
+                            <Gem className='text-blue-500' />
+                        </ActionTooltip>
+                    )}
                 </h1>
                 <h1>VS</h1>
                 {waiting ? (
@@ -108,7 +114,16 @@ export const ChessBoardComponent = ({
                     </Avatar>
                 ) : null}
                 <h1 className='font-bold'>
-                    {fail ? fail : (!waiting ? (opponent ? opponent.name : '') : 'Searching for an opponent...')}
+                    {fail ? fail : (!waiting ? (opponent ? (
+                        <div className='flex gap-3'>
+                            {opponent.name}
+                            {opponent.subscribed === true && (
+                                <ActionTooltip label='Diamond Member' side='top' align='center'>
+                                    <Gem className='text-blue-500' />
+                                </ActionTooltip>
+                            )}
+                        </div>
+                    ) : '') : 'Searching for an opponent...')}
                 </h1>
             </div>
             <ChessBoard
