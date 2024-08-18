@@ -1,4 +1,5 @@
 'use client'
+import { LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const RedirectToHome = () => {
@@ -8,7 +9,9 @@ const RedirectToHome = () => {
 
     return ( 
         <>
-            Loading...
+            <div className="flex items-center justify-center h-[100vh]">
+                <LoaderCircle className="animate-spin w-20  h-20" />
+            </div>
         </>
      );
 }

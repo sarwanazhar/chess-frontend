@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type ModalType = 'play';
+export type ModalType = 'play' | 'editProfile';
 
 interface ModalData {
     id?: string;

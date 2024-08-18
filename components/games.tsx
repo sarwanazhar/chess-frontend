@@ -7,6 +7,7 @@ import { LoaderCircle, ServerCrash } from "lucide-react";
 
 interface GamesProps {
     profile: User;
+    render?: number;
 }
 
 interface Game {
@@ -22,16 +23,17 @@ interface Game {
     createdAt: string;  // Add this field if it's not already included in the Game type
 }
 
-export const Games = ({ profile }: GamesProps) => {
+export const Games = ({ profile, render }: GamesProps) => {
     const [games, setGames] = useState<Game[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const renderGames = render ? render : 8
 
     useEffect(() => {
         async function fetchGames() {
             try {
                 setLoading(true);
-                const response = await axios.post(`https://secret-chess-backend-production.up.railway.app/fetch-games`, { id: profile.id });
+                const response = await axios.post(`http://localhost:8080/fetch-games`, { id: profile.id });
                 const sortedGames = response.data.sort((a: Game, b: Game) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
                 setGames(sortedGames);
                 setError(null);
@@ -56,7 +58,7 @@ export const Games = ({ profile }: GamesProps) => {
         )}>
             {loading && <div className="text-center animate-spin"><LoaderCircle className="h-20 w-20" /></div>}
             {error && <div className="text-center text-red-600 flex items-center justify-center flex-col"><ServerCrash className="h-20 w-20" /> <h1 className="text-3xl">Server Crashed</h1> </div>}
-            {!loading && !error && games.slice(0, 8).map((game: any) => {
+            {!loading && !error && games.slice(0, renderGames).map((game: any) => {
                 const isWhitePlayer = game.WhitePlayer.id === profile.id;
                 const isWinner = (isWhitePlayer && game.result === '1-0') || (!isWhitePlayer && game.result === '0-1');
                 const isLoser = (isWhitePlayer && game.result === '0-1') || (!isWhitePlayer && game.result === '1-0');
