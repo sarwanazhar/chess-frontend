@@ -5,6 +5,7 @@ import { Separator } from "../ui/separator";
 import { useClerk } from "@clerk/nextjs";
 import ActionTooltip from "../ui/action-tooltip";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 const SideBar = () => {
@@ -20,6 +21,25 @@ const SideBar = () => {
   const onClick = () => {
     signOut()
   }
+
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+      const handleResize = () => {
+          setIsLargeScreen(window.innerWidth >= 1024); // Tailwind's lg breakpoint
+      };
+
+      // Initial check
+      handleResize();
+
+      // Add resize event listener
+      window.addEventListener('resize', handleResize);
+
+      // Clean up on unmount
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
+  }, []);
 
   return (
     <>

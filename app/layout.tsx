@@ -8,6 +8,7 @@ import {
 } from '@clerk/nextjs';
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
           <ClerkProvider>
             <ModalProvider />
             {children}
+            <Toaster />
           </ClerkProvider>
         </ThemeProvider>
       </body>

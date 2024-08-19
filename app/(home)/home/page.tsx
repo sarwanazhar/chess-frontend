@@ -1,5 +1,6 @@
 import { ButtonServer } from "@/components/button-for-client";
 import { Games } from "@/components/games";
+import { MobileHiddenClient } from "@/components/mobile-hidden-client";
 import NavBar from "@/components/navigation/navbar";
 import SideBar from "@/components/sidebar/sidebar";
 import { initialProfile } from "@/lib/initialProfile";
@@ -12,12 +13,8 @@ const Main = async () => {
     return ( 
         <>
           <div className="bg-zinc-800 h-[200vh]  w-full flex">
-            <div className="hidden lg:block h-[100vh] w-40 bg-zinc-900/70 fixed">
-              <SideBar />
-            </div>
-            <div className="hidden lg:block h-[200vh] w-44 bg-zinc-900/70">
-            
-            </div>
+            <MobileHiddenClient />
+
             <div className="w-full">
               <NavBar profile={profile} />
               <div className="px-10 lg:px-20 mt-6 w-full h-[70vh]">

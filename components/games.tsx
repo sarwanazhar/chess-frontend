@@ -33,7 +33,7 @@ export const Games = ({ profile, render }: GamesProps) => {
         async function fetchGames() {
             try {
                 setLoading(true);
-                const response = await axios.post(`http://localhost:8080/fetch-games`, { id: profile.id });
+                const response = await axios.post(`https://secret-chess-backend-production.up.railway.app/fetch-games`, { id: profile.id });
                 const sortedGames = response.data.sort((a: Game, b: Game) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
                 setGames(sortedGames);
                 setError(null);
