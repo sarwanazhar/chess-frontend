@@ -55,7 +55,7 @@ export const EditProfileModal = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.post("http://localhost:8080/fetch-profile", { userId });
+                const response = await axios.post("https://secret-chess-backend-production.up.railway.app/fetch-profile", { userId });
 
                 setUser(response.data);
                 form.reset({ name: response.data.name, imageUrl: response.data.imageUrl });
