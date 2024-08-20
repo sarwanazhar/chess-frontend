@@ -21,7 +21,10 @@ export const PlayModal = () => {
                 </DialogTitle>
                 </DialogHeader>
                 <div className="h-[35vh] w-full flex items-center justify-center flex-col">
-                    <button onClick={() => router.push('/start')} className="px-6 hover:bg-slate-800 transition delay-50 py-2 bg-slate-600 text-xl rounded-full mb-5">
+                    <button onClick={() => {
+                        handleClose()
+                        router.push('/start')
+                        }} className="px-6 hover:bg-slate-800 transition delay-50 py-2 bg-slate-600 text-xl rounded-full mb-5">
                         You vs Online Player
                     </button>
                     <button className="px-6 hover:bg-slate-800 transition delay-50 py-2 bg-slate-600 text-xl rounded-full mb-5">
