@@ -1,7 +1,6 @@
 import { DiamondCard } from "@/components/diamond-card";
 import { MobileHiddenClient } from "@/components/mobile-hidden-client";
 import NavBar from "@/components/navigation/navbar";
-import SideBar from "@/components/sidebar/sidebar";
 import { initialProfile } from "@/lib/initialProfile";
 
 const Page = async () => {
