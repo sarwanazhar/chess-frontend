@@ -19,6 +19,7 @@ A modern, responsive frontend for a Chess application built with Next.js, TypeSc
 - **Responsive Design:** Ensures optimal viewing experience across devices.
 - **Theme Support:** Light and Dark themes with seamless switching.
 - **Notifications:** Informative Toaster notifications for user actions and updates.
+- **Real-time Updates:** Enabled using Socket.io for instant game updates and notifications.
 - **Modern UI:** Clean and intuitive interface built with React components.
 
 
@@ -31,6 +32,7 @@ A modern, responsive frontend for a Chess application built with Next.js, TypeSc
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
 - [Lucide Icons](https://lucide.dev/) - Icon library.
 - [Prisma](https://www.prisma.io/) - ORM for database interactions.
+- [Socket.io](https://socket.io/) - Real-time bidirectional event-based communication.
 - [Vercel](https://vercel.com/) - Platform for deploying Next.js applications.
 
 ## Installation
@@ -90,19 +92,19 @@ Follow these steps to set up the project locally.
 5. **Start the Development Server**
 
     Using npm:
-
+    
     ```bash
     npm run dev
     ```
-
+    
     Or using yarn:
-
+    
     ```bash
     yarn dev
     ```
-
+    
     Or using pnpm:
-
+    
     ```bash
     pnpm dev
     ```
@@ -167,3 +169,4 @@ Please ensure your code adheres to the project's code style and includes relevan
 - **Email:** sarwanazhar1234@gmail.com
 - **GitHub:** [sarwanazhar](https://github.com/sarwanazhar)
 - **Instagram:** [s.m_sarwan_ali](https://www.instagram.com/s.m_sarwan_ali)
+```
