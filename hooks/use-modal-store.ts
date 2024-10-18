@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type ModalType = 'play' | 'editProfile';
+export type ModalType = 'play' | 'editProfile' | 'addFriends';
 
 interface ModalData {
     id?: string;

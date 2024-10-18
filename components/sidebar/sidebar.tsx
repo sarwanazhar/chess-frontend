@@ -1,15 +1,22 @@
 'use client'
-import { Gem, LogOut, Search, User } from "lucide-react";
+import { BookUser, Gem, LogOut, Search, User } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { useClerk } from "@clerk/nextjs";
 import ActionTooltip from "../ui/action-tooltip";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useModal } from "@/hooks/use-modal-store";
 
+interface SideBarProps {
+  userId: string
+}
 
-const SideBar = () => {
+const SideBar = ({
+  userId
+}: SideBarProps) => {
   const router = useRouter()
+  const { onOpen } = useModal();
 
   const onClickProfile = () => {
     router.push('/profile')
@@ -57,6 +64,12 @@ const SideBar = () => {
             Puzzles
           </button>
           </ActionTooltip>
+          <ActionTooltip side="right" align="center" label="analyse your games.">
+          <button className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-zinc-900" onClick={() => router.push("/analyse")}>
+            <Search />
+            Analyse
+          </button>
+          </ActionTooltip>
           <ActionTooltip  side="right" label="buy premium to support us." align="center">
           <button onClick={() => router.push('/subscribe')} className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-blue-400 group transition">
             <Gem className="text-blue-600 group-hover:text-blue-800" />
@@ -73,9 +86,15 @@ const SideBar = () => {
           </button>
           </ActionTooltip>
           <ActionTooltip side="right" align="center" label="Add friends to play with them !">
-          <button className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-zinc-900">
+          <button onClick={() => onOpen("addFriends", {userId: userId})} className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-zinc-900">
             <Search />
             Add
+          </button>
+          </ActionTooltip>
+          <ActionTooltip side="right" align="center" label="Chat with your Friends">
+          <button className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold text-xl hover:bg-zinc-900">
+            <BookUser />
+            Friends
           </button>
           </ActionTooltip>
           <button onClick={() => onClick()} className="flex px-5 py-3 w-full gap-3 justify-start text-white items-center font-bold hover:bg-zinc-900">

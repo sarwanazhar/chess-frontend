@@ -2,8 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import SideBar from './sidebar/sidebar';
+import { User } from '@prisma/client';
 
-export const MobileHiddenClient = () => {
+interface MobileHiddenClientProps{
+  profile: User;
+}
+
+export const MobileHiddenClient = ({
+  profile
+}: MobileHiddenClientProps) => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
@@ -32,7 +39,7 @@ export const MobileHiddenClient = () => {
   return (
     <div>
       <div className="h-[100vh] w-40 bg-zinc-900/70 fixed">
-        <SideBar />
+        <SideBar userId={profile?.userId}/>
       </div>
       <div className="h-[200vh] w-40 bg-zinc-900/70">
         {/* Additional content here */}

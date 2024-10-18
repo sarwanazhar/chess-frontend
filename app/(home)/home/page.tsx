@@ -13,7 +13,7 @@ const Main = async () => {
     return ( 
         <>
           <div className="bg-zinc-800 h-[200vh]  w-full flex">
-            <MobileHiddenClient />
+            <MobileHiddenClient profile={profile} />
 
             <div className="w-full">
               <NavBar profile={profile} />
