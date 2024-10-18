@@ -10,7 +10,6 @@ A modern, responsive frontend for a Chess application built with Next.js, TypeSc
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Features
@@ -22,11 +21,6 @@ A modern, responsive frontend for a Chess application built with Next.js, TypeSc
 - **Notifications:** Informative Toaster notifications for user actions and updates.
 - **Modern UI:** Clean and intuitive interface built with React components.
 
-## Demo
-
-![Chess Frontend Demo](path_to_demo_image)
-
-> *Add a screenshot or GIF of your application here*
 
 ## Technologies Used
 
@@ -46,7 +40,7 @@ Follow these steps to set up the project locally.
 ### Prerequisites
 
 - **Node.js** (v14 or later)
-- **npm** or **yarn**
+- **npm** or **yarn** or **pnpm**
 - **Clerk account** for authentication
 
 ### Steps
@@ -54,7 +48,7 @@ Follow these steps to set up the project locally.
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/yourusername/chess-frontend.git
+    git clone https://github.com/sarwanazhar/chess-frontend
     ```
 
 2. **Navigate to the Project Directory**
@@ -75,6 +69,12 @@ Follow these steps to set up the project locally.
 
     ```bash
     yarn install
+    ```
+
+    Or using pnpm:
+
+    ```bash
+    pnpm install
     ```
 
 4. **Set Up Environment Variables**
@@ -99,6 +99,12 @@ Follow these steps to set up the project locally.
 
     ```bash
     yarn dev
+    ```
+
+    Or using pnpm:
+
+    ```bash
+    pnpm dev
     ```
 
 6. **Open the Application**
@@ -156,11 +162,8 @@ Contributions are welcome! Please follow these steps to contribute:
 
 Please ensure your code adheres to the project's code style and includes relevant tests.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
-- **Email:** your.email@example.com
-- **GitHub:** [yourusername](https://github.com/yourusername)
+- **Email:** sarwanazhar1234@gmail.com
+- **GitHub:** [sarwanazhar](https://github.com/sarwanazhar)
+- **Instagram:** [s.m_sarwan_ali](https://www.instagram.com/s.m_sarwan_ali)
